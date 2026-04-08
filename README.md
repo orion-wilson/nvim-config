@@ -59,4 +59,12 @@ The following are installed automatically by Mason on first launch:
 
 Compiled automatically on first launch. Requires `gcc` (included in `build-essential`).
 
-Parsers: `lua`, `rust`, `javascript`
+Parsers: `lua`, `rust`, `javascript`, `typescript`, `json`, `toml`, `bash`, `markdown`
+
+## Flash (jump anywhere on screen)
+
+Press `s` in normal mode, type 2 characters of where you want to jump, then press the letter label that appears on your target. You land there instantly.
+
+Example: to jump to a variable named `config`, press `s`, type `co`, then press whatever label appears next to it.
+
+`S` works the same way but selects a treesitter node at the target location instead of just moving the cursor.

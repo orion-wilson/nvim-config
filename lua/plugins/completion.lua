@@ -10,7 +10,7 @@ return {
           preset = "default",
           ["<CR>"] = {
             function(cmp)
-              if cmp.accept() then
+              if cmp.is_visible() and cmp.accept() then
                 vim.schedule(function()
                   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
                 end)
@@ -26,7 +26,7 @@ return {
           ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
         },
         sources = {
-          default = { "lsp", "path", "snippets", "buffer" },
+          default = { "lsp", "path", "snippets" },
         },
       })
     end,
