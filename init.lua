@@ -1,37 +1,30 @@
-vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
-vim.g.mapleader = " "
+require "config.lazy"
 
--- bootstrap lazy and all plugins
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.scrolloff = 30
 
-if not vim.uv.fs_stat(lazypath) then
-  local repo = "https://github.com/folke/lazy.nvim.git"
-  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
-end
+vim.cmd "set expandtab"
+vim.cmd "set tabstop=2"
+vim.cmd "set softtabstop=2"
+vim.cmd "set shiftwidth=2"
 
-vim.opt.rtp:prepend(lazypath)
+vim.cmd.colorscheme "catppuccin-nvim"
+local builtin = require "telescope.builtin"
+vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
+vim.keymap.set("n", "<leader>fr", function()
+  builtin.grep_string({ search = vim.fn.expand("%:t:r") })
+end, { desc = "Find references to current file" })
 
-local lazy_config = require "configs.lazy"
+vim.keymap.set("n", "<leader>tt", ":Neotree toggle<CR>")
+vim.keymap.set("n", "<leader>tf", ":Neotree focus<CR>")
 
--- load plugins
-require("lazy").setup({
-  {
-    "NvChad/NvChad",
-    lazy = false,
-    branch = "v2.5",
-    import = "nvchad.plugins",
-  },
+vim.keymap.set("t", "jk", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
-  { import = "plugins" },
-}, lazy_config)
-
--- load theme
-dofile(vim.g.base46_cache .. "defaults")
-dofile(vim.g.base46_cache .. "statusline")
-
-require "options"
-require "autocmds"
-
-vim.schedule(function()
-  require "mappings"
-end)
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to split below" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move to split above" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move to right split" })
