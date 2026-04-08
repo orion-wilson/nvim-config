@@ -3,13 +3,11 @@ return {
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
     build = ':TSUpdate',
+    main = 'nvim-treesitter',
     opts = {
-      ensure_installed = { "lua", "rust", "javascript", "typescript", "json", "toml", "bash", "markdown" },
+      ensure_install = { "lua", "rust", "javascript", "typescript", "json", "toml", "bash", "markdown" },
       auto_install = true,
     },
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
-    end,
   },
   {
     'nvim-treesitter/nvim-treesitter-context',
