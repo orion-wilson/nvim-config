@@ -5,12 +5,16 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls", "rust_analyzer" },
         automatic_installation = true,
+      })
+      require("mason-tool-installer").setup({
+        ensure_installed = { "stylua", "prettier" },
       })
 
       vim.lsp.config("lua_ls", {
