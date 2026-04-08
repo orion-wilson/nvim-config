@@ -12,6 +12,7 @@ return {
 				{ "<leader>a", group = "AI (Claude)" },
 				{ "<leader>r", group = "Refactor" },
 				{ "<leader>c", group = "Code" },
+				{ "<leader>n", group = "Navigate" },
 			},
 		},
 	},
