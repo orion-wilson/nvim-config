@@ -22,6 +22,7 @@ end, { desc = "Find references to current file" })
 vim.keymap.set("n", "<leader>tt", ":Neotree toggle<CR>")
 vim.keymap.set("n", "<leader>tf", ":Neotree focus<CR>")
 
+vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode" })
 vim.keymap.set("t", "jk", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
