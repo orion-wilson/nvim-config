@@ -23,18 +23,6 @@ vim.keymap.set("n", "<leader>tt", ":Neotree toggle<CR>")
 vim.keymap.set("n", "<leader>tf", ":Neotree focus<CR>")
 
 vim.keymap.set("t", "jk", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-local _lsp_ref_win = nil
-vim.keymap.set("n", "<leader>cc", function()
-  vim.cmd("cclose")
-  if _lsp_ref_win and vim.api.nvim_win_is_valid(_lsp_ref_win) then
-    vim.api.nvim_set_current_win(_lsp_ref_win)
-    _lsp_ref_win = nil
-  end
-end, { desc = "Close quickfix" })
-
--- expose for lsp.lua
-_G._lsp_ref_win = function() return _lsp_ref_win end
-_G._lsp_ref_win_set = function(id) _lsp_ref_win = id end
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to split below" })
