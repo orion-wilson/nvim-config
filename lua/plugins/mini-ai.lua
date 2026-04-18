@@ -4,15 +4,15 @@
 --   q  any quote   ciq / caq
 
 return {
-  {
-    "echasnovski/mini.ai",
-    event = "VeryLazy",
-    opts = {
-      custom_textobjects = {
-        f = false,
-        c = false,
-        t = false,
-      },
-    },
-  },
+	{
+		"echasnovski/mini.ai",
+		event = "VeryLazy",
+		opts = {
+			custom_textobjects = {
+				f = false,
+				c = false,
+				t = false,
+			},
+		},
+	},
 }
